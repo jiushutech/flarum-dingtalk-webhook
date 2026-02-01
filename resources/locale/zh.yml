@@ -1,0 +1,165 @@
+dingtalk-webhook:
+  actions:
+    discussion:
+      started: "【新帖发布】{1}"
+      renamed: "【主题重命名】{1}"
+      renamed_description: "新标题：{1}"
+      hidden: "【主题隐藏】{1}"
+      restored: "【主题恢复】{1}"
+      deleted: "【主题删除】{1}"
+
+    group:
+      created: "【用户组创建】{1}"
+      renamed: "【用户组重命名】{1}"
+      deleted: "【用户组删除】{1}"
+
+    post:
+      posted: "【新回复】{1}"
+      revised: "【回复编辑】{1}"
+      hidden: "【回复隐藏】{1}"
+      restored: "【回复恢复】{1}"
+      deleted: "【回复删除】{1}"
+      approved: "【回复审核通过】{1}"
+
+    user:
+      registered: "【新用户注册】"
+      renamed: "【用户改名】{1}"
+      renamed_description: "新用户名：{1}"
+      deleted: "【用户删除】{1}"
+
+  admin:
+    nav:
+      title: 钉钉 Webhook
+      desc: 将论坛事件推送到钉钉群机器人
+
+    settings:
+      debug_label: 调试模式
+      debug_help: 启用后，更多日志信息会输出到 Flarum 日志文件，帮助调试 Webhook 问题。
+
+      help:
+        general: 在这里您可以添加、编辑和删除钉钉 Webhook 配置。
+        tags: 您可以限制 Webhook 只在特定标签下触发。如果选择了标签，只有在相关资源包含所选标签时才会触发 Webhook。
+        url: 钉钉机器人的 Webhook 地址
+        disabled: 此 Webhook 已禁用，因为没有启用任何事件。
+
+      item:
+        tag_any_label: 任意标签
+
+      modal:
+        title: Webhook 设置
+        description: 在这里配置 Webhook 触发的事件。
+
+        tabs:
+          basic: 基础设置
+          events: 事件配置
+          advanced: 高级选项
+
+        name_label: 名称
+        name_help: Webhook 的显示名称，用于在列表中识别。
+
+        url_label: Webhook 地址
+        url_help: "钉钉机器人的 Webhook 地址，格式为 https://oapi.dingtalk.com/robot/send?access_token=xxx"
+        url_placeholder: 请输入钉钉机器人 Webhook 地址
+
+        secret_label: 加签密钥
+        secret_help: 如果钉钉机器人启用了加签安全设置，请在此输入密钥。留空表示不使用加签。
+        secret_placeholder: 可选，留空表示不使用加签
+
+        group_label: 可见组群
+        group_help: 只推送该组群可见的内容
+
+        tag_label: 限定标签
+        tag_help: 只在指定标签下的内容触发 Webhook
+
+        events_label: 事件
+        events_help: 选择要触发 Webhook 的事件
+
+        include_matching_tags_label: 包含匹配标签
+        include_matching_tags_help: 在推送消息中显示触发事件的标签
+
+        use_plain_text_label: 使用纯文本
+        use_plain_text_help: 减少帖子内容的格式化
+
+        max_post_content_length_label: 最大内容长度
+        max_post_content_length_help: 设置推送内容的最大字数，0 或留空表示无限制
+
+        extra_text_label: 附加文本
+        extra_text_help: 在推送消息中添加的额外文本
+
+        message_template_label: 自定义消息模板
+        message_template_help: |
+          自定义推送消息格式，支持 Markdown 语法。留空使用默认模板。
+          
+          **可用变量：**
+          • {title} - 消息标题
+          • {url} - 资源链接
+          • {description} - 内容描述
+          • {author} - 操作人名称
+          • {author_url} - 操作人主页
+          • {timestamp} - 事件时间
+          • {extra_text} - 附加文本
+          • {tags} - 相关标签
+          • {event_type} - 事件类型
+          
+          **示例模板：**
+          ### {title}
+          **操作人**: [{author}]({author_url})
+          **时间**: {timestamp}
+          {description}
+          [查看详情]({url})
+        message_template_placeholder: "### {title}\n\n**操作人**: [{author}]({author_url})\n\n**时间**: {timestamp}\n\n**内容**: {description}\n\n[查看详情]({url})"
+
+        save_button: 保存
+        cancel_button: 取消
+
+      card:
+        events_enabled: "{count} 个事件已启用"
+        no_events: 未启用任何事件
+        edit_button: 编辑
+        delete_button: 删除
+        test_button: 测试发送
+        delete_confirm: 确定要删除此 Webhook 吗？
+        test_success: 测试消息发送成功！
+        test_failed: 测试消息发送失败
+
+      add_button: 添加 Webhook
+      no_webhooks: 暂无 Webhook 配置
+
+      actions:
+        flarum:
+          discussion:
+            title: 主题
+            started: 新帖发布
+            renamed: 重命名
+            hidden: 隐藏
+            restored: 恢复
+            deleted: 删除
+
+          group:
+            title: 用户组
+            created: 创建
+            renamed: 重命名
+            deleted: 删除
+
+          post:
+            title: 回复
+            posted: 新回复
+            revised: 编辑
+            hidden: 隐藏
+            restored: 恢复
+            deleted: 删除
+
+          user:
+            title: 用户
+            registered: 注册
+            renamed: 改名
+            deleted: 删除
+
+          approval:
+            title: 审核
+            postwasapproved: 审核通过
+
+    errors:
+      url_invalid: Webhook 地址格式不正确，请输入有效的钉钉机器人 Webhook 地址。
+      tag_invalid: 此 Webhook 限定了无效的标签，限制将不会生效。
+      tag_disabled: 此 Webhook 配置了标签限制，但标签扩展已禁用，限制将不会生效。

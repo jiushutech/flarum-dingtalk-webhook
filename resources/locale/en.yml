@@ -1,0 +1,165 @@
+dingtalk-webhook:
+  actions:
+    discussion:
+      started: "New discussion: {1}"
+      renamed: "Discussion renamed: {1}"
+      renamed_description: "New title: {1}"
+      hidden: "Discussion hidden: {1}"
+      restored: "Discussion restored: {1}"
+      deleted: "Discussion deleted: {1}"
+
+    group:
+      created: "Group created: {1}"
+      renamed: "Group renamed: {1}"
+      deleted: "Group deleted: {1}"
+
+    post:
+      posted: "New post in: {1}"
+      revised: "Post edited in: {1}"
+      hidden: "Post hidden in: {1}"
+      restored: "Post restored in: {1}"
+      deleted: "Post deleted in: {1}"
+      approved: "Post approved in: {1}"
+
+    user:
+      registered: "New user registered"
+      renamed: "User renamed: {1}"
+      renamed_description: "New username: {1}"
+      deleted: "User deleted: {1}"
+
+  admin:
+    nav:
+      title: DingTalk Webhook
+      desc: Push forum events to DingTalk robot
+
+    settings:
+      debug_label: Debug Mode
+      debug_help: Enable to output more logs to Flarum log file for debugging webhook issues.
+
+      help:
+        general: Here you can add, edit, and remove DingTalk webhooks.
+        tags: You can restrict webhooks to specific tags. If you select any tags, the webhook will only be fired if the event is triggered on a resource that has any of the selected tags.
+        url: The DingTalk robot webhook URL
+        disabled: This webhook is disabled because it doesn't have any events enabled.
+
+      item:
+        tag_any_label: Any Tag
+
+      modal:
+        title: Webhook Settings
+        description: Configure the events that trigger this webhook.
+
+        tabs:
+          basic: Basic Settings
+          events: Events
+          advanced: Advanced
+
+        name_label: Name
+        name_help: Display name for this webhook.
+
+        url_label: Webhook URL
+        url_help: "DingTalk robot webhook URL, format: https://oapi.dingtalk.com/robot/send?access_token=xxx"
+        url_placeholder: Enter DingTalk robot webhook URL
+
+        secret_label: Sign Secret
+        secret_help: If the DingTalk robot has sign security enabled, enter the secret here. Leave empty to disable signing.
+        secret_placeholder: Optional, leave empty to disable signing
+
+        group_label: Group
+        group_help: Only push content visible to this group
+
+        tag_label: Tags
+        tag_help: Only trigger webhook for content with specified tags
+
+        events_label: Events
+        events_help: Select events that trigger this webhook
+
+        include_matching_tags_label: Include Matching Tags
+        include_matching_tags_help: Show matched tags in the push message
+
+        use_plain_text_label: Use Plain Text
+        use_plain_text_help: Reduce formatting in post content
+
+        max_post_content_length_label: Max Content Length
+        max_post_content_length_help: Maximum characters for pushed content, 0 or empty for unlimited
+
+        extra_text_label: Extra Text
+        extra_text_help: Additional text to include in push messages
+
+        message_template_label: Custom Message Template
+        message_template_help: |
+          Customize the push message format with Markdown syntax. Leave empty to use default template.
+          
+          **Available variables:**
+          • {title} - Message title
+          • {url} - Resource URL
+          • {description} - Content description
+          • {author} - Author name
+          • {author_url} - Author profile URL
+          • {timestamp} - Event timestamp
+          • {extra_text} - Extra text
+          • {tags} - Related tags
+          • {event_type} - Event type
+          
+          **Example template:**
+          ### {title}
+          **Author**: [{author}]({author_url})
+          **Time**: {timestamp}
+          {description}
+          [View Details]({url})
+        message_template_placeholder: "### {title}\n\n**Author**: [{author}]({author_url})\n\n**Time**: {timestamp}\n\n**Content**: {description}\n\n[View Details]({url})"
+
+        save_button: Save
+        cancel_button: Cancel
+
+      card:
+        events_enabled: "{count} events enabled"
+        no_events: No events enabled
+        edit_button: Edit
+        delete_button: Delete
+        test_button: Test Send
+        delete_confirm: Are you sure you want to delete this webhook?
+        test_success: Test message sent successfully!
+        test_failed: Failed to send test message
+
+      add_button: Add Webhook
+      no_webhooks: No webhooks configured
+
+      actions:
+        flarum:
+          discussion:
+            title: Discussion
+            started: Started
+            renamed: Renamed
+            hidden: Hidden
+            restored: Restored
+            deleted: Deleted
+
+          group:
+            title: Group
+            created: Created
+            renamed: Renamed
+            deleted: Deleted
+
+          post:
+            title: Post
+            posted: Posted
+            revised: Edited
+            hidden: Hidden
+            restored: Restored
+            deleted: Deleted
+
+          user:
+            title: User
+            registered: Registered
+            renamed: Renamed
+            deleted: Deleted
+
+          approval:
+            title: Approval
+            postwasapproved: Post Approved
+
+    errors:
+      url_invalid: Invalid webhook URL. Please enter a valid DingTalk robot webhook URL.
+      tag_invalid: This webhook is restricted to an invalid tag. The restriction will not apply.
+      tag_disabled: This webhook had a tag restriction configured. The Tags extension is disabled. The restriction will not apply.

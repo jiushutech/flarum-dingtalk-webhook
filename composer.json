@@ -1,0 +1,54 @@
+{
+    "name": "jiushutech/flarum-dingtalk-webhook",
+    "description": "Flarum 钉钉机器人 Webhook 集成插件",
+    "version": "1.0.0",
+    "keywords": [
+        "flarum",
+        "dingtalk",
+        "webhook",
+        "notification"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/jiushutech/flarum-dingtalk-webhook/issues",
+        "source": "https://github.com/jiushutech/flarum-dingtalk-webhook"
+    },
+    "require": {
+        "flarum/core": "^1.7.0",
+        "guzzlehttp/guzzle": "7.*",
+        "html2text/html2text": "^4.3.1"
+    },
+    "authors": [
+        {
+            "name": "jiushutech",
+            "email": "dev@jiushutech.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "JiushuTech\\DingTalkWebhook\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "钉钉机器人 Webhook",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-bell",
+                "backgroundColor": "#1890ff",
+                "color": "#fff"
+            },
+            "optional-dependencies": [
+                "flarum/tags",
+                "flarum/approval"
+            ]
+        }
+    },
+    "require-dev": {
+        "flarum/phpstan": "*",
+        "flarum/tags": "*",
+        "flarum/approval": "*"
+    }
+}

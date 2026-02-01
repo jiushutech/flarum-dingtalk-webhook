@@ -1,0 +1,24 @@
+# Dependencies
+/vendor/
+/js/node_modules/
+
+# IDE
+/.idea/
+/.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+/js/dist/*.map
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
